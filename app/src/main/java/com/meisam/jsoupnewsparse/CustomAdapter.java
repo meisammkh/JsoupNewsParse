@@ -29,7 +29,7 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 100;
+        return 150;
     }
 
     @Override

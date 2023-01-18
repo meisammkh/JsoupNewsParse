@@ -2,6 +2,8 @@ package com.meisam.jsoupnewsparse;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -52,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
     public class NewThread extends AsyncTask<String, Void, String> {
 
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+
+
+        @Override
+        protected void onPreExecute(){
+            dialog.setMessage("Loading News...");
+            dialog.show();
+
+        }
+
         @Override
         protected String doInBackground(String... arg) {
 
@@ -73,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            dialog.dismiss();
+
             lv.setAdapter(customAdapter);
 
         }
